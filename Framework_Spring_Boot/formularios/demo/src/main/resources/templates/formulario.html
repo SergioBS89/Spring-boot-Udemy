@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titulo}"></title>
+    <script type="text/javascript"></script>
+</head>
+
+<body>
+    <h1 th:text="${titulo}"></h1>
+
+    <form th:action="@{/form}" method="post">
+        <div>
+            <label for="username">Username</label>
+            <div>
+                <input type="text" name="username" id="username">
+            </div>
+        </div>
+        <div>
+            <label for="pass">Password</label>
+            <div>
+                <input type="text" name="pass" id="pass">
+            </div>
+        </div> 
+        <div>
+            <label for="email">Email</label>
+            <div>
+                <input type="text" name="email" id="email">
+            </div>
+        </div>
+        <div>
+            <label for="age">Age</label>
+            <div>
+                <input type="text" name="age" id="age">
+            </div>
+        </div>
+        <br>
+        <div>
+            <div>
+                <input type="submit" value="Send dates">
+            </div>
+        </div>
+
+    </form>
+
+    <br>
+
+    <h3><a href="http://localhost:8080/form/starWars">Link hacia formulario Star Wars</a></h3>
+    
+</body>
+
+</html>

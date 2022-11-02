@@ -1,0 +1,38 @@
+<html lang="en" xmlns:th="https://www.thymeleaf.org"></html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"></script>
+</head>
+<body>
+    <h1 th:text="${titulo}"></h1>
+
+    <br>
+    <h2 th:text="${factura.descripcion}"></h2>
+    <div>
+        <h2>Cliente: <span th:text="${factura.cliente.nombre + ' ' + factura.cliente.apellidos}"></span></h2>
+        <h4>Detalle de la factura</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Itero la lista creada -->
+              <tr th:each="li: ${factura.list}">
+                <td th:text="${li.producto.nombre}"></td>
+                <td th:text="${li.producto.precio}"></td>
+                <td th:text="${li.cantidad}"></td>
+                <td th:text="${li.sumaTotal()}"></td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

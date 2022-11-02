@@ -1,0 +1,16 @@
+.errores{
+    color: red;
+}
+
+label{
+    color: blue;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+label.roles{
+color: rgb(116, 187, 10);
+font-size: 15px;
+cursor: pointer;
+}

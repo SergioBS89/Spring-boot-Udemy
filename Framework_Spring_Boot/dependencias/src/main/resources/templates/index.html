@@ -1,0 +1,29 @@
+<!-- Importante asociar el xmlns -->
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEPENDENCIAS</title>
+  
+</head>
+<body>
+    <h1>INYECCION DE DEPENDENCIAS </h1>
+    
+    <p>Instancia que viene sin inyeccion de dependencias:</p>
+    <h3 th:text="${servicio}"></h3>
+    <br>
+    <p>Instancia que viene CON INYECCION DE DEPENDENCIAS:</p>
+    <h3 th:text="${servicioInyec}"></h3>
+    <br>
+    <p>Instancia que viene CON INYECCION DE DEPENDENCIAS Y DESDE UNA INTERFAZ:</p>
+    <h3 th:text="${servicioInter}"></h3>
+    <br>
+    <p>Instancia que viene CON INYECCION DE DEPENDENCIAS Y DESDE UNA INTERFAZ MEDIANTE EL CONSTRUCTOR DEL CONTROLADOR:</p>
+    <h3 th:text="${servicioConst}"></h3>
+    <br>
+    <p>Instancia que viene CON INYECCION DE DEPENDENCIAS Y DESDE UNA INTERFAZ MEDIANTE UN COMPONENTE CREADO CON @BEAN:</p>
+    <h3 th:text="${servicioBean}"></h3>
+
+</body>
+</html>

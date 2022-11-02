@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th='http://www.thymeleaf.org'>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script type="text/javascript"></script>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+    <h1 th:text="${titulo}"></h1>
+
+    <!-- GRACIAS AL FRAMEWORK DE SPRING BOOT PODEMOS HACER USO DE VALIDADORES DE LOS CAMPOS DE UN FORMULARIO USANDO EN ESTE CASO LA 
+    INSTANCIA DE UNA CLASE, PARA ELLO USAREMOS LA SIGUIENTE NOTACION TH:OBJECT -->
+    <form th:action="@{/form/starWars}" th:object="${sw}" method="post">
+        <!--El th:object='sw' es el nombre de la instancia que manda el 
+    controlador a la vista-->
+        <div>
+            <label for="personaje">Nombre del personaje</label>
+            <div>
+                <!-- suprimimos la etiqueta name por th:field, indicando el atributo de la clase-->
+                <input type="text" th:field="*{personaje}" id="personaje">
+            </div>
+            <!-- VALIDACION DE LOS CAMPOS DESDE LA VISTA FORMA MANUAL (ENVIO DE ERRORES) -->
+            <!-- <div th:if="${error != null && error.containsKey('personaje')}" th:text="${error.personaje}"></div> -->
+
+            <!-- USANDO EL FRAMEWORK SPRING BOOT  -->
+            <div th:if="${#fields.hasErrors('personaje')}" th:errors="*{personaje}" th:class="errores"></div>
+        </div>
+
+        <div>           
+            <label>ROLES DEL PERSONAJE</label>
+            <div th:each="rol: ${listaRoles}">
+                <input type="checkbox" th:field="*{roles}" th:value="${rol}">
+                <!-- Para conseguir que al pulsar la etiqueta label del formulario, se marque el checkbox -->
+                <label th:for="${#ids.prev('roles')}" th:class="roles" th:text="${rol}"></label>               
+            </div>
+             <!-- VALIDACION DE LOS CAMPOS DESDE LA VISTA (ENVIO DE ERRORES) -->
+             <div th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}" th:class="errores"></div>
+        </div>
+       
+        <div>
+           
+            <label for="genero">Genero</label>
+            <br>
+            <span>Este valor viene por defecto desde el controlador (simulación de datos que son obtenidos de un registro en la BBDD)</span>
+            <div>
+                <!-- suprimimos la etiqueta name por th:field, indicando el atributo de la clase-->
+                <input type="text" th:field="*{genero}"  id="genero">               
+            </div>
+             <!-- VALIDACION DE LOS CAMPOS DESDE LA VISTA (ENVIO DE ERRORES) -->
+             <div th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}" th:class="errores"></div>
+        </div>
+        <div>           
+            <label for="edad">Edad</label>          
+            <div>
+                <!-- suprimimos la etiqueta name por th:field, indicando el atributo de la clase-->
+                <input type="number" th:field="*{edad}"  id="edad">               
+            </div>
+             <!-- VALIDACION DE LOS CAMPOS DESDE LA VISTA (ENVIO DE ERRORES) -->
+             <div th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}" th:class="errores"></div>
+        </div>
+        <div>
+            <label for="fechaNacimiento">Fecha de nacimiento</label>
+            <div>
+                <!-- suprimimos la etiqueta name por th:field, indicando el atributo de la clase-->
+                <input type="date" th:field="*{fechaNacimiento}" id="fechaNacimiento">
+            </div>
+            <!-- VALIDACION DE LOS CAMPOS DESDE LA VISTA (ENVIO DE ERRORES) -->
+            <div th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}" th:class="errores"></div>
+        </div>
+        <div>
+            <label for="raza">Raza</label>
+            <div>
+                <input type="text" th:field="*{raza}">
+            </div>
+             <!-- VALIDACION DE LOS CAMPOS DESDE LA VISTA (ENVIO DE ERRORES) -->
+             <div th:if="${#fields.hasErrors('raza')}" th:errors="*{raza}" th:class="errores"></div>
+        </div> 
+        <div>
+            <label for="sableLaser">Planeta</label>
+            <div>
+                <select id="listaPlanetas" th:field="*{planeta}">
+                    <option value="">--Seleccionar planeta donde vive--</option>
+                    <option th:each="planeta: ${listaPlanetas.entrySet()}" th:text="${planeta.value}" th:value="${planeta.key}"></option>
+                </select>
+            </div>
+             <!-- VALIDACION DE LOS CAMPOS DESDE LA VISTA (ENVIO DE ERRORES) -->
+             <div th:if="${#fields.hasErrors('planeta')}" th:errors="*{planeta}" th:class="errores"></div>
+        </div>
+       
+        <div>
+            <label for="jedi">Es un Jedi??</label>
+            <div>
+                <select th:field="*{jedi}">
+                    <option value="true">Si! es un Jedi</option>
+                    <option value="true">Es un SITH!</option>
+                    <option selected value="false">No! nunca sera un jedi</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <label for="habilidades">Habilidades</label>
+            <div>
+                <select id="habilidades" th:field="*{habilidades}">
+                    <option value="">--Seleccionar habilidades--</option>
+                    <option th:each="habilidades: ${listaHabilidades}" th:text="${habilidades.poderFuerza}" th:value="${habilidades.id}"></option>
+                </select>
+            </div>
+             <!-- VALIDACION DE LOS CAMPOS DESDE LA VISTA (ENVIO DE ERRORES) -->
+             <div th:if="${#fields.hasErrors('habilidades')}" th:errors="*{habilidades}" th:class="errores"></div>
+        </div>
+
+        <div>
+            <label for="sableLaser">Color del sable laser</label>
+            <div>
+                <select id="sableLaser" th:field="*{sableLaser}">
+                    <option value="">--Seleccionar el color del sable--</option>
+                    <option th:each="sableLaser: ${listaColores}" th:text="${sableLaser}" th:value="${sableLaser}"></option>
+                </select>
+            </div>
+             <!-- VALIDACION DE LOS CAMPOS DESDE LA VISTA (ENVIO DE ERRORES) -->
+             <div th:if="${#fields.hasErrors('sableLaser')}" th:errors="*{sableLaser}" th:class="errores"></div>
+        </div>
+
+        <div>
+            <label for="binario">Nombre Binario(Prueba de validación REGEX)</label>
+            <div>
+                <input type="text" th:field="*{binario}">
+            </div>
+             <!-- VALIDACION DE LOS CAMPOS DESDE LA VISTA (ENVIO DE ERRORES) -->
+             <div th:if="${#fields.hasErrors('binario')}" th:errors="*{binario}" th:class="errores"></div>
+        </div>
+        <br>
+
+        <div>
+            <div>
+                <input type="submit" value="Send dates">
+            </div>
+        </div>
+
+    </form>
+
+</body>
+</html>

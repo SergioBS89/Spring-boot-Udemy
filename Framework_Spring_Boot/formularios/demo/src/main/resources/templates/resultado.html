@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Datos enviados</title>
+<script type="text/javascript"></script>
+</head>
+<body>
+    <h1>DATOS ENVIADOS DESDE EL FORMULARIO</h1>
+
+    <h3 th:text="${user != null} ? 'FORMULARIO STANDART' : 'FORMULARIO CON INSTANCIA DE CLASE'"></h3>
+
+    <!-- CUIDADO CON LAS EXPRESIONES IF ELSE, MISMA CONDICION EN AMBOS CASOS (VEMOS EJEMPLO ABAJO) -->
+
+    <!-- se muestran los datos enviados desde los formularios -->
+    <div th:if="${user != null}">
+        <p th:text="'-' + ${user}"></p>
+        <p th:text="'-' + ${password}"></p>
+        <p th:text="'-' + ${email}"></p>
+        <p th:text="'-' + ${age}"></p>
+    </div>    
+    <div th:unless="${user !=  null}">
+        <p th:text="'-' + ${sw.personaje}"></p>
+        <div th:each="roles: ${sw.roles}">
+        <p th:text="${roles}"></p>
+        </div>
+        <p th:text="'-' + ${sw.genero}"></p>
+        <p th:text="'-' + ${sw.edad}"></p>
+        <!-- ----------- PERSONALIZANDO FORMATOS DE LA FECHA EN LA VISTA ----------- -->
+        <p th:text="'-' + ${sw.fechaNacimiento}"></p>
+        <p th:text="'-' + ${#dates.format(sw.fechaNacimiento, 'dd/MM/yyyy')}"></p>
+        <p th:text="'-' + ${sw.raza}"></p>
+        <p>Key HashMap de lista select planetas</p>
+        <p th:text="'-' + ${sw.planeta}"></p>
+        <p th:text="'-' + ${isJedi}"></p>
+        <p th:text="'-' + ${sw.habilidades.poderFuerza}"></p>
+        <p th:text="'-' + ${sw.habilidades.usoArmasFuego}"></p>
+        <p th:text="'-' + ${sw.habilidades.usoSable}"></p>
+        <p th:text="'-' + ${sw.sableLaser}"></p>
+        <p th:text="'-' + ${sw.id}"></p>
+    </div>
+
+
+    <br>
+    
+    <h3><a href="http://localhost:8080/form">Volver al formulario inicial</a></h3>
+
+
+
+</body>
+</html>

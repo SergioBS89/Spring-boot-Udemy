@@ -1,0 +1,80 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch SpringAirlineApplication",
+            "request": "launch",
+            "mainClass": "com.everis.dar.springairline.SpringAirlineApplication",
+            "projectName": "spring-airline"
+        },
+        {
+            "type": "java",
+            "name": "Launch DemoApplication",
+            "request": "launch",
+            "mainClass": "formularios.demo.DemoApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Launch CrudJpaApplication",
+            "request": "launch",
+            "mainClass": "com.maven.crud_jpa.CrudJpaApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Launch CourseApplication",
+            "request": "launch",
+            "mainClass": "main.CourseApplication",
+            "projectName": "course"
+        },
+        {
+            "type": "java",
+            "name": "Launch CourseApplication",
+            "request": "launch",
+            "mainClass": "com.formularios.CourseApplication",
+            "projectName": "course"
+        },
+        {
+            "type": "java",
+            "name": "Launch CourseApplication",
+            "request": "launch",
+            "mainClass": "com.formularios.course.CourseApplication",
+            "projectName": "course"
+        },
+        {
+            "type": "java",
+            "name": "Launch SpringBootWebApplication",
+            "request": "launch",
+            "mainClass": "com.cursoudemy.app.springbootweb.SpringBootWebApplication",
+            "projectName": "spring-boot-web"
+        },
+        {
+            "type": "java",
+            "name": "Launch DemoApplication",
+            "request": "launch",
+            "mainClass": "appFacuras.DemoApplication",
+            "projectName": "demo"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-DependenciasApplication<dependencias>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "dependencias.model_controller.DependenciasApplication",
+            "projectName": "dependencias",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CourseApplication<course>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.formularios.main.CourseApplication",
+            "projectName": "course",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
